@@ -171,6 +171,11 @@ call plug#begin('~/.vim/bundle')
 
 let g:plug_url_format='git@github.com:%s.git'
 
+Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'} 
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tomtom/tcomment_vim'                                  " 添加注释
+Plug 'junegunn/vim-slash'                                   " 优化搜索，移动清除搜索高亮
 Plug 'mhinz/vim-startify'      " 启动页图标
 Plug 'morhetz/gruvbox'         " gruvbox 配色                      
 Plug 'vim-airline/vim-airline' " 美化Vim状态栏
@@ -203,10 +208,9 @@ map <F9>  :PreviousColorScheme<CR>
 imap <F9> <Esc> :PreviousColorScheme<CR>
 
 " Markdown preview
-nmap <slient> <F7> <Plug>MarkdownPreview
-imap <slient> <F7> <Plug>MarkdownPreview
-nmap <slient> <F8> <Plug>MarkdownPreviewStop
-imap <slient> <F8> <Plug>MarkdownPreviewStop
+let g:mkdp_echo_preview_url = 1
+map <slient> <F5> :MarkdownPreview<CR>
+map <slient> <F6> :MarkdownPreviewStop<CR>
 
 
 " 定义快捷键 关闭当前分割窗口
@@ -407,3 +411,8 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.o$', '\.d$', '\.a$', '\.out$', '\.tgz$']
 
 " 使用TlistToggle查看文件函数列表。设置快捷键：<F12>
 nnoremap  <Leader>m  :TlistToggle <CR> 
+
+"  YCM Setting
+
+
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
