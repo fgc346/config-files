@@ -58,6 +58,10 @@ set softtabstop=2           " tab缩进单位为2
 set shiftwidth=2            " 自动缩进单位2
 set encoding=utf-8          " UTF-8 编码
 
+" Vim 一些主题需要启动256-color和True-Color才能正常显示使用
+"
+" 终端支持的颜色 256色 8位比特
+" True-Color 24位比特 能表示1百多万颜色，比256色表现的更细腻
 set t_Co=256                " 开启256色（若终端支持）
 " 开启True-Color,注意,不支持真彩色的终端将显示异常
 if has("termguicolors")
@@ -94,24 +98,23 @@ set showcmd             " 显示输入的命令
 " 显示可能的匹配项，可以使用tab键在这个菜单中进行选择
 set wildmenu
 
-set nobackup
+set nobackup              " 不生成临时文件
 set noswapfile
 set autoread
 set autowrite
 set confirm
 
-set history=1024
+set history=1024          " 保留撤销历史的 1024 步
 
-set timeoutlen=700        " Time to wait for a command
+" 为了切换中英文输入法无延迟
+" 
+set timeoutlen=100        " Time to wait for a command
 
 
 " 启用匹配括号高亮显示
 set showmatch        " Show matching brackets.
 " 在GUI模式下，移除工具栏(Toolbar)
 set guioptions-=T
-
-" 获取当前工作目录
-let curpwd = getcwd()
 
 
 " 禁止光标闪烁
@@ -180,8 +183,9 @@ Plug 'mhinz/vim-startify'      " 启动页图标
 Plug 'morhetz/gruvbox'         " gruvbox 配色                      
 Plug 'vim-airline/vim-airline' " 美化Vim状态栏
 Plug 'chxuan/change-colorscheme'  " 配色切换
-Plug 'dracula/vim'                " dracula 配色
+" Plug 'dracula/dracula-theme-who-speaks'               " dracula 配色
 Plug 'tabnine/YouCompleteMe', { 'do': './install.py' }      " 代码自动完成
+" Plug 'flilydjwg/fcitx.vim'              " 插入模式下按，esc进入normal 自动进入英文输入法
 
 " 设置语言组
 " Plugins for language
@@ -416,3 +420,35 @@ nnoremap  <Leader>m  :TlistToggle <CR>
 
 
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+
+
+
+" 以下设置离开插入模式时自动关闭中文输入法(输入法框架为fcitx或fcitx5)进入插入模式切换回上一次插入模式时的输入法
+if exists('g:fcitx_auto')
+    finish
+endif
+let g:fcitx_auto = 1
+let s:r_status = 1
+let s:f_status = system("fcitx-remote")
+let s:cmd = s:f_status == 1 || s:f_status == 2 ? "fcitx-remote" : "fcitx5-remote"
+
+function s:fcitx2en()  "离开插入模式，自动改变输入法为英文，同时记录输入法状态
+    let l:lang = system(s:cmd)
+    if l:lang == 2
+        call system(printf("%s -c", s:cmd))
+        let s:r_status = 2
+    else
+        let s:r_status = 1
+    endif
+endfunction
+
+function s:fcitx2back() "进入插入模式的时候，切换回上一次插入模式时的输入法
+    if s:r_status == 1
+        call system(printf("%s -c", s:cmd))
+    else
+        call system(printf("%s -o", s:cmd))
+    endif
+endfunction
+autocmd InsertLeave * call <SID>fcitx2en()
+autocmd InsertEnter * call <SID>fcitx2back()
+"以上设置离开插入模式自动关闭中文输入法，进入插入模式切换回上一次插入模式时的输入法
