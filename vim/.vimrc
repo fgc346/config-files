@@ -12,7 +12,7 @@
 "
 " Author: Er Ma <fhxwqg@gmail.com>
 " Source: 
-" Version: 0.0.1
+" Version: 0.0.2
 " Created: 2023-12-9
 " 
 " Sections:
@@ -108,7 +108,7 @@ set history=1024          " 保留撤销历史的 1024 步
 
 " 为了切换中英文输入法无延迟
 " 
-set timeoutlen=100        " Time to wait for a command
+set timeoutlen=700        " Time to wait for a command
 
 
 " 启用匹配括号高亮显示
@@ -128,11 +128,13 @@ autocmd FileType cpp,java inoremap { {<CR>}<ESC>kA<CR>
 set fenc=" "
 "显示匹配
 set showmatch
+
 "括号匹配
 " inoremap ( ()<ESC>i
 " inoremap [ []<ESC>i
 " inoremap ' ''<ESC>i
 " inoremap " ""<ESC>i
+
 set selectmode=mouse,key
 set selection=exclusive
 set mouse=n "可视模式下使用鼠标，set mouse=a这个命令导致在vim下复制粘贴不好用
@@ -172,7 +174,7 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-let g:plug_url_format='git@github.com:%s.git'
+"let g:plug_url_format='git@github.com:%s.git'
 
 Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'} 
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
@@ -206,6 +208,8 @@ set bg=dark
 " -------------------------------------------------
 " KEY MAPPING
 " -------------------------------------------------
+
+" Switch ColorScheme
 map <F12> :NextColorScheme<CR>
 imap <F12> <Esc> :NextColorScheme<CR>
 map <F9>  :PreviousColorScheme<CR>
@@ -213,15 +217,18 @@ imap <F9> <Esc> :PreviousColorScheme<CR>
 
 " Markdown preview
 let g:mkdp_echo_preview_url = 1
-map <slient> <F5> :MarkdownPreview<CR>
-map <slient> <F6> :MarkdownPreviewStop<CR>
-
+" map <slient> <F5> <Plug>MarkdownPreview
+" map <slient> <F6> <plug>MarkdownPreviewStop
+let g:mkdp_brower = 'chromium'
+autocmd Filetype markdown noremap <F5> :MarkdownPreview<CR>
+autocmd Filetype markdown noremap <F6> :MarkdownPreviewStop<CR>
 
 " 定义快捷键 关闭当前分割窗口
 nmap <Leader>q :q<CR>
 " 定义快捷键,保存文件
 nmap <Leader>w :w<CR>
-" 删除光标所在单词
+
+"标签页管理
 " close TAB
 nmap tabc :tabc <CR>
 " go to previous table
@@ -257,11 +264,9 @@ nmap <Leader>z <C-Z>
 nmap <Leader>s :Sex<CR>
 " 竖直分隔
 nmap <Leader>v :Vex<CR>
-" 全局替换
-nmap <Leader>r :%s/fileName-/fileName+/g
+"
 " align 表格对齐
 nmap <Leader>t :Tab /
-nmap<leader>tg :!ctags -R --fields=+aS --extra=+q<CR>
 " map! mapmode-ic Insert/Command-line，在插入模式和命令行模式映射
 " Ctrl-X，Ctrl-O，在插入模式下，用于打开Omni补全，Omni(omniscient)是一种高级的补全功能
 map! <C-O> <C-X><C-O>
@@ -293,7 +298,11 @@ noremap <C-d> :call cursor(line('.') + 9, col('.'))<CR>
 
 " Ctrl + U 映射为 向上9行
 noremap <C-u> :call cursor(line('.') - 9, col('.'))<CR>
+" Ctrl-j 映射为向下9行
+noremap <C-j> :call cursor(line('.') + 9, col('.'))<CR>
 
+" Ctrl-k 映射为向上9行
+noremap <C-k> :call cursor(line('.') - 9, col('.'))<CR>
 
 " shortcut for markdown
 " 创建时间快捷键for markdown
@@ -309,31 +318,11 @@ func SetTable()
         call append(line(".")+2, "\| | |")
 endfunc
 
-nmap pc :call SetPic() <CR>
-func SetPic()
-        call append(line("."), "\<img src='' width=600 alt=''> </img></div>")
-endfunc
-
-nmap pi :call SetPic1() <CR>
+nmap pc :call SetPic1() <CR>
 func SetPic1()
         call append(line("."), "\![]()")
 endfunc
 
-nmap vi :call SetVideo() <CR>
-func SetVideo()
-        call append(line("."), "\<video src='1.mp4' controls='controls' width='640' height='320' autoplay='autoplay'> Your browser does not support the video tag.</video></div>")
-endfunc
-
-nmap cl :call SetCollor() <CR>
-func SetCollor()
-        call append(line("."), "<span  style='color: #f16707;'> </span>")
-endfunc
-
-" vim cc
-nmap cc :call SetCC() <CR>
-func SetCC() 
-    call append(line("."), "// vim: et tw=100 ts=4 sw=4 cc=120")  
-endfunc
 
 "------------------------------------------------------------------------------
 " Users Function Settings
@@ -417,7 +406,6 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.o$', '\.d$', '\.a$', '\.out$', '\.tgz$']
 nnoremap  <Leader>m  :TlistToggle <CR> 
 
 "  YCM Setting
-
 
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 
