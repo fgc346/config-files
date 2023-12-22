@@ -1,2 +1,5 @@
 # config-files
-some config about linux softs
+this is my dotfiles in linux(ubuntu)
+- vim
+-  tmux
+-  vscode
