@@ -1,0 +1,188 @@
+{
+    "cmake.configureOnOpen": true,
+    "extensions.ignoreRecommendations": true,
+    "python.pythonPath": "/home/erma/anaconda3/bin/python",
+    "editor.largeFileOptimizations": false,
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "todo-tree.tree.showScanModeButton": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "update.mode": "none",
+    "workbench.editor.enablePreview": false,
+    "terminal.integrated.automationShell.linux": "",
+    "terminal.integrated.fontFamily": "monospace",
+    // 集成终端字体大小
+    "terminal.integrated.fontSize": 14,
+    // 输出窗口字体大小
+    "[Log]": {
+      "editor.fontSize": 15
+    },
+    "python.defaultInterpreterPath": "/home/erma/anaconda3/bin/python",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "fileheader.configObj": {
+        "createFileTime": true,
+        "language": {
+            "languagetest": {
+                "head": "/$$",
+                "middle": " $ @",
+                "end": " $/"
+            }
+        },
+        "autoAdd": false,
+        "autoAddLine": 100,
+        "autoAlready": true,
+        "annotationStr": {
+            "head": "/*",
+            "middle": " * @",
+            "end": " */",
+            "use": false
+        },
+        "headInsertLine": {
+            "php": 2,
+            "sh": 2
+        },
+        "beforeAnnotation": {
+            "文件后缀": "该文件后缀的头部注释之前添加某些内容"
+        },
+        "afterAnnotation": {
+            "文件后缀": "该文件后缀的头部注释之后添加某些内容"
+        },
+        "specialOptions": {
+            "特殊字段": "自定义比如LastEditTime/LastEditors"
+        },
+        "switch": {
+            "newlineAddAnnotation": true
+        },
+        "supportAutoLanguage": [],
+        "prohibitAutoAdd": [
+            "json"
+        ],
+        "folderBlacklist": [
+            "node_modules",
+            "文件夹禁止自动添加头部注释"
+        ],
+        "prohibitItemAutoAdd": [
+            "项目的全称, 整个项目禁止自动添加头部注释, 可以使用快捷键添加"
+        ],
+        "moveCursor": true,
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "atSymbol": [
+            "@",
+            "@"
+        ],
+        "atSymbolObj": {
+            "文件后缀": [
+                "头部注释@符号",
+                "函数注释@符号"
+            ]
+        },
+        "colon": [
+            ": ",
+            ": "
+        ],
+        "colonObj": {
+            "文件后缀": [
+                "头部注释冒号",
+                "函数注释冒号"
+            ]
+        },
+        "filePathColon": "路径分隔符替换",
+        "showErrorMessage": false,
+        "writeLog": false,
+        "wideSame": false,
+        "wideNum": 13,
+        "functionWideNum": 0,
+        "CheckFileChange": false,
+        "createHeader": true,
+        "useWorker": false,
+        "designAddHead": false,
+        "headDesignName": "random",
+        "headDesign": false,
+        "cursorModeInternalAll": {},
+        "openFunctionParamsCheck": true,
+        "functionParamsShape": [
+            "{",
+            "}"
+        ],
+        "functionBlankSpaceAll": {},
+        "functionTypeSymbol": "*",
+        "typeParamOrder": "type param",
+        "customHasHeadEnd": {}
+    },
+    //t头部注释
+    "fileheader.customMade": {
+        // 头部注释默认字段
+        "Author": "fenggaochao",
+        "Date": "Do not edit", // 设置后默认设置文件生成时间
+        "LastEditTime": "Do not edit", // 设置后，保存文件更改默认更新最后编辑时间
+        "LastEditors": "fenggaochao", // 设置后，保存文件更改默认更新最后编辑人
+        "Description": "",
+        "FilePath": "Do not edit", // 设置后，默认生成文件相对于项目的路径
+    },
+    // 函数注释
+    "fileheader.cursorMode": {
+        // 默认字段
+        "description": "",
+        "param": "",
+        "return": ""
+    },
+    "fileheader.Author": "fenggaochao",
+    "fileheader.LastModifiedBy": "fenggaochao",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "C_Cpp.intelliSenseCacheSize": 100,
+    // 编译区域 字体大小  
+    "editor.fontSize": 18,
+    "search.followSymlinks": false,
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "files.exclude": {
+        "**/node_modules": true
+    },
+    "git.autorefresh": false,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "files.maxMemoryForLargeFilesMB": 100000,
+    "files.autoSave": "afterDelay",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "editor.detectIndentation": false,
+    "window.restoreWindows": "none",
+    "workbench.colorTheme": "Visual Studio Dark - C++",
+    "[python]": {
+        "editor.formatOnType": false
+    },
+    "vim.useSystemClipboard": true,
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.editorLargeFileConfirmation": 10240,
+    "editor.formatOnSave": true,
+    "explorer.confirmDelete": false,
+    "C_Cpp.intelliSenseMemoryLimit": 16384,
+    "explorer.confirmDragAndDrop": false,
+    "Codegeex.Privacy": false,
+    "Codegeex.OnlyKeyControl": false,
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "python.languageServer": "Pylance",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "python.sortImports.args": [
+        "--force-sort-within-sections"
+    ],
+    "python.formatting.autopep8Path": "--max-line-length=80",
+    "python.formatting.yapfPath": "",
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.showOptionsMovedNotification": false,
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.vimrc",
+    "editor.minimap.enabled": false,
+}
